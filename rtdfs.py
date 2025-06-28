@@ -1,17 +1,19 @@
 import requests
 import time
 import random
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 URL = "http://(((url)))/sendData" 
 
 def generate_data_unit():
+    utc_plus_3 = timezone(timedelta(hours=3))
     return {
-        "ID": "sensor-1",
-        "sID": random.randint(0, 10),
-        "dt": datetime.now().isoformat(),
+        "ID": "Data-flow-simulation-1",
+        "sID": 0,
+        "dt": datetime.now(utc_plus_3).isoformat(),
         "d": random.uniform(-10, 10)
     }
+
 
 while True:
     payload = {
